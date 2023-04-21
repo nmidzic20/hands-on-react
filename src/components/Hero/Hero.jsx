@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 
 const Hero = () => {
     return (
-<section className="Hero">
+      <section className="Hero">
         <figure className="Hero-Figure">
           <img
             src={HeroImg}
@@ -26,7 +26,7 @@ const Hero = () => {
           </div>
         </div>
       </section>
-    );
+    )
 }
 
 export default Hero

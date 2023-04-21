@@ -1,11 +1,11 @@
-.section {
+.Section {
     background-color: var(--color-bg-primary);
 
     &_secondary {
         background-color: var(--color-bg-secondary);
     }
     
-    &__inner {
+    &-Inner {
         padding: 64px 24px;
 
         @media screen and (min-width: 768px) {  
@@ -23,7 +23,7 @@
         }
     }
     
-    &__title {
+    &-Title {
         max-width: 550px;
         margin: 0 auto;
         text-align: center;
@@ -39,7 +39,7 @@
         }
     }
     
-    &__subtitle {
+    &-Subtitle {
         max-width: 700px;
         margin: 0 auto;
         text-align: center;

@@ -1,8 +1,9 @@
+@use './theme';
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
-  --font-primary: "Inter", sans-serif;
-  --color-primary: #bf3939;
+  --font-primary: 'Inter', sans-serif;//$fontPrimary;
+  --color-primary: #bf3939;//theme.$colorPrimary;
   --color-primary-dark: #8a2828;
   --color-secondary: #ffffff;
   --color-black: #000000;
