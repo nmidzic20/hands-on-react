@@ -1,5 +1,7 @@
+@import '../../theme.scss';
+
 .Header {
-  background-color: var(--color-bg-secondary);
+  background-color: $colorBgSecondary;
 
   &-Inner {
     height: 80px;
@@ -8,17 +10,17 @@
     align-items: center;
     padding: 0 24px;
 
-    @media screen and (min-width: 768px) {
+    @media screen and ($tablet) {
       padding: 0 32px;
     }
 
-    @media screen and (min-width: 1024px) {
+    @media screen and ($desktop) {
       padding: 0;
       max-width: 930px;
       margin: 0 auto;
     }
 
-    @media screen and (min-width: 1300px) {
+    @media screen and ($desktopLarge) {
       max-width: 1280px;
     }
   }
@@ -28,7 +30,7 @@
     width: 32px;
     height: 32px;
 
-    @media screen and (min-width: 1024px) {    
+    @media screen and ($desktop) {    
       display: none;
     }
   }
@@ -37,17 +39,17 @@
     display: none;
 
     a.active {
-      color: var(--color-primary);
+      color: $colorPrimary;
     }
 
-    @media screen and (min-width: 1024px) {
+    @media screen and ($desktop) {
       display: flex;
       align-items: center;
     }
   }
   
   &-LogoImg path {
-    fill: var(--color-primary);
+    fill: $colorPrimary;
   }
   
   &-Link {
@@ -56,7 +58,7 @@
     transition: color 0.3s ease-out;
 
     &:hover {
-      color: var(--color-primary);
+      color: $colorPrimary;
     }
   }
   

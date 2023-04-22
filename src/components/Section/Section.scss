@@ -1,24 +1,26 @@
+@import '../../theme.scss';
+
 .Section {
-    background-color: var(--color-bg-primary);
+    background-color: $colorBgPrimary;
 
     &_secondary {
-        background-color: var(--color-bg-secondary);
+        background-color: $colorBgSecondary;
     }
     
     &-Inner {
         padding: 64px 24px;
 
-        @media screen and (min-width: 768px) {  
+        @media screen and ($tablet) {  
             padding: 72px 32px;
         }
 
-        @media screen and (min-width: 1024px) {
+        @media screen and ($desktop) {
             padding: 90px 0;
             max-width: 930px;
             margin: 0 auto;
         }
 
-        @media screen and (min-width: 1300px) {
+        @media screen and ($desktopLarge) {
             max-width: 1280px;
         }
     }
@@ -30,11 +32,11 @@
         margin-bottom: 32px;
         font-size: 28px;
 
-        @media screen and (min-width: 768px) {  
+        @media screen and ($tablet) {  
             font-size: 32px;
         }
 
-        @media screen and (min-width: 1024px) {
+        @media screen and ($desktop) {
             font-size: 36px;
         }
     }
@@ -43,7 +45,7 @@
         max-width: 700px;
         margin: 0 auto;
         text-align: center;
-        color: var(--color-text-secondary);
+        color: $colorTextSecondary;
         font-size: 16px;
         margin-bottom: 48px;
     }

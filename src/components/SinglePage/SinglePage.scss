@@ -1,3 +1,5 @@
+@import '../../theme.scss';
+
 .SinglePage {
 
     &-Figure {
@@ -7,18 +9,18 @@
         border-radius: 6px;
         margin-bottom: 32px;
 
-        @media screen and (min-width: 580px) {
+        @media screen and ($tabletSmall) {
             height: 300px;
         }
             
-        @media screen and (min-width: 768px) {        
+        @media screen and ($tablet) {        
             flex-shrink: 0;
             width: 350px;
             height: 350px;
             margin-right: 48px;
         }
             
-        @media screen and (min-width: 1300px) {
+        @media screen and ($desktopLarge) {
             width: 500px;
             height: 450px;
             margin-right: 120px;
@@ -36,7 +38,7 @@
         line-height: 150%;
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and ($tablet) {
         padding-top: 48px;
         display: flex;
         justify-content: space-between;
