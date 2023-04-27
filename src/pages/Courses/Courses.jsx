@@ -2,12 +2,21 @@ import React from 'react'
 import Section from '../../components/Section/Section'
 import Course from '../../components/Course/Course'
 import Grid from "../../components/Grid/Grid"
-import LectureImg1 from "../../assets/images/lecture-1.jpg"
-import LectureImg2 from "../../assets/images/lecture-2.jpg"
-import LectureImg3 from "../../assets/images/lecture-3.jpg"
-import LectureImg5 from "../../assets/images/lecture-5.jpg"
+import {courses} from "../../assets/courses"
 
 const Courses = () => {
+
+  let courseItems = courses.map((course) => (
+    <Course
+      key = {course.id}
+      imgSrc = {course.imgSrc}
+      imgAlt = {course.imgAlt}
+      title = {course.title}
+      subtitle = {course.subtitle}
+      time = {course.time}
+    />
+  ));
+
   return (
     <>
       <Section
@@ -17,34 +26,7 @@ const Courses = () => {
           the courses page."
       >
         <Grid>
-          <Course
-            imgSrc={LectureImg1}
-            imgAlt="Lecture1"
-            title="Introduction"
-            subtitle="Get to know us better..."
-            time="60 min"
-          />
-          <Course
-            imgSrc={LectureImg2}
-            imgAlt="Lecture2"
-            title="HTML & CSS"
-            subtitle="Learn HTML & CSS basics..."
-            time="100 min"
-          />
-          <Course
-            imgSrc={LectureImg3}
-            imgAlt="Lecture3"
-            title="Version Control Systems"
-            subtitle="Learn GIT and Gitflow basics..."
-            time="90 min"
-          />
-          <Course
-            imgSrc={LectureImg5}
-            imgAlt="Lecture5"
-            title="Advanced CSS"
-            subtitle="BEM methodology, grid, flex..."
-            time="120 min"
-          />
+          {courseItems}
         </Grid>
       </Section>
     </>
