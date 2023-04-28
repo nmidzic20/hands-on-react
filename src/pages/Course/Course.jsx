@@ -2,26 +2,35 @@ import React from 'react'
 import Section from '../../components/Section/Section'
 import SinglePage from '../../components/SinglePage/SinglePage'
 import LectureImg1 from "../../assets/images/lecture-1.jpg"
+import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import coursesMock from '../../utils/mock/courses'
 
 const Course = () => {
+  const {id} = useParams();
+
+  const [courses, setCourses] = useState(null);
+  const [course, setCourse] = useState(null);
+
+  useEffect(() => {
+      setTimeout(() => {
+          setCourses(coursesMock)
+      }, 1000);
+  }, []);
+
+  useEffect(() => {
+    courses && setCourse(courses.find((course) => course.id == id));
+  }, [courses]);
+
   return (
+    course &&
     <Section
-      title="Introduction"  
+      title={course.title} 
     >
       <SinglePage
-        imgSrc={LectureImg1}
-        imgAlt="Lecture1"
-        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint
-          omnis, aspernatur veritatis iure quisquam vel quos, numquam eaque
-          at, saepe incidunt harum. Voluptates eligendi iste ullam fuga
-          officiis distinctio earum? Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Rem iusto sequi in sit, consequuntur similique
-          ullam eligendi adipisci. Neque odit sequi modi iusto adipisci
-          recusandae vitae sapiente cum sit est. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Saepe voluptates minus nulla
-          voluptatibus quod voluptatum debitis aspernatur magnam eius
-          nostrum, quaerat facere molestias modi, amet praesentium? Tempore
-          nihil dignissimos veniam."
+        imgSrc={course.imgSrc}
+        imgAlt={course.imgAlt}
+        content={course.content}
       />
     </Section>
   )

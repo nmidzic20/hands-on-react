@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import "./Course.scss"
 import { Link } from 'react-router-dom'
 
-const Course = ({ imgSrc, imgAlt, title, subtitle, time }) => {
+const Course = ({ id, imgSrc, imgAlt, title, subtitle, time }) => {
   return (
     <article className="Course">
-      <Link to="/course">
+      <Link to={`/courses/${id}`}>
         <figure className="Course-Figure">
           <img
               src={imgSrc}
@@ -23,6 +23,7 @@ const Course = ({ imgSrc, imgAlt, title, subtitle, time }) => {
 }
 
 Course.propTypes = {
+  id: PropTypes.number,
   imgSrc: PropTypes.string,
   imgAlt: PropTypes.string,
   title: PropTypes.string,

@@ -1,6 +1,6 @@
 import "./Hero.scss"
 import HeroImg from "../../assets/images/landing.jpg"
-import Button from "../Button/Button";
+import {Button} from "../../utils/styles/generalStyles";
 
 const Hero = () => {
     return (

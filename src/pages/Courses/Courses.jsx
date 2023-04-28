@@ -1,14 +1,15 @@
 import React from 'react'
 import Section from '../../components/Section/Section'
 import Course from '../../components/Course/Course'
-import Grid from "../../components/Grid/Grid"
-import {courses} from "../../assets/courses"
+import {Grid} from "../../utils/styles/generalStyles"
+import coursesMock from "../../utils/mock/courses"
 
 const Courses = () => {
 
-  let courseItems = courses.map((course) => (
+  let courseItems = coursesMock.map((course) => (
     <Course
       key = {course.id}
+      id = {course.id}
       imgSrc = {course.imgSrc}
       imgAlt = {course.imgAlt}
       title = {course.title}
