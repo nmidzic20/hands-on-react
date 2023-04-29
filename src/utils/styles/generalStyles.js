@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors, breakpoints } from "./theme"
+import {ReactComponent as CancelIcon } from "../../assets/images/icon-cancel.svg"
 
 export const Button = styled.button`
     display: inline-block;
@@ -36,4 +37,10 @@ export const Grid = styled.div`
     @media screen and (${breakpoints.desktopLarge}) {
         grid-template-columns: repeat(4, 1fr);
     }
+`
+
+export const CancelImg = styled(CancelIcon)`
+    display: block;
+    width: 32px;
+    height: 32px;
 `

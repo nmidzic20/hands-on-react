@@ -51,13 +51,14 @@ export const HamburgerMenu = styled.ul`
     top: 0;
     right: 0;
     height: 100vh;
-    width: 300px;
+    width: 250px;
     padding-top: 3.5rem;
-    border: 2px solid green;
+    border: 2px solid ${colors.primaryDark};
     z-index: 5;
     background-color: ${colors.bgSecondary};
+    font-size: large;
 
     li {
-    padding: 18px 10px;
+        padding: 18px 24px;
     }
 `
