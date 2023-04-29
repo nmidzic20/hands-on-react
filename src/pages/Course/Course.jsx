@@ -12,9 +12,9 @@ const Course = () => {
   const [course, setCourse] = useState(null);
 
   useEffect(() => {
-      setTimeout(() => {
-          setCourses(coursesMock)
-      }, 1000);
+    setTimeout(() => {
+      setCourses(coursesMock)
+    }, 1000);
   }, []);
 
   useEffect(() => {
