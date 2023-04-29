@@ -1,6 +1,6 @@
 import React from 'react'
 import Course from "../../components/Course/Course"
-import {Grid} from "../../utils/styles/generalStyles"
+import { Grid } from "../../utils/styles/generalStyles"
 import Hero from "../../components/Hero/Hero"
 import Section from "../../components/Section/Section"
 import coursesMock from "../../utils/mock/courses"

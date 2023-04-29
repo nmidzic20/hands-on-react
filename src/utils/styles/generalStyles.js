@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors, breakpoints, fonts } from "./theme"
+import { colors, breakpoints } from "./theme"
 
 export const Button = styled.button`
     display: inline-block;
@@ -16,7 +16,8 @@ export const Button = styled.button`
     }
         
     &:hover {
-        background-color: ${colors.colorPrimaryDark};
+        background-color: ${colors.primaryDark};
+        cursor: pointer;
     }
 `
 

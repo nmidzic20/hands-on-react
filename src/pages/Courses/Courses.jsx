@@ -1,7 +1,7 @@
 import React from 'react'
 import Section from '../../components/Section/Section'
 import Course from '../../components/Course/Course'
-import {Grid} from "../../utils/styles/generalStyles"
+import { Grid } from "../../utils/styles/generalStyles"
 import coursesMock from "../../utils/mock/courses"
 
 const Courses = () => {

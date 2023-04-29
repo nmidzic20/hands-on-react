@@ -1,7 +1,6 @@
 import React from 'react'
 import Section from '../../components/Section/Section'
 import SinglePage from '../../components/SinglePage/SinglePage'
-import LectureImg1 from "../../assets/images/lecture-1.jpg"
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import coursesMock from '../../utils/mock/courses'

@@ -1,11 +1,11 @@
 import React from 'react'
-import './Main.scss'
+import { Main as MainWrapper } from "./MainStyle"
 
 const Main = ( props ) => {
   return (
-    <main className='Main'>
-        {props.children}
-    </main>
+    <MainWrapper>
+      {props.children}
+    </MainWrapper>
   )
 }
 

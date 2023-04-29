@@ -1,32 +1,45 @@
-import "./Hero.scss"
-import HeroImg from "../../assets/images/landing.jpg"
+import HeroImage from "../../assets/images/landing.jpg"
 import {Button} from "../../utils/styles/generalStyles";
+import { useNavigate } from "react-router-dom";
+import { 
+  Hero as HeroWrapper,
+  HeroImg,
+  HeroContent, 
+  HeroContentInner, 
+  HeroFigure, 
+  HeroOverlay, 
+  HeroSubtitle, 
+  HeroTextCard, 
+  HeroTitle 
+} from "./HeroStyle";
 
 const Hero = () => {
-    return (
-      <section className="Hero">
-        <figure className="Hero-Figure">
-          <img
-            src={HeroImg}
-            alt="Speck Academy Hero"
-            className="Hero-Img"
-          />
-        </figure>
-        <div className="Hero-Overlay"></div>
-        <div className="Hero-Content">
-          <div className="Hero-ContentInner">
-            <div className="Hero-TextCard">
-              <h1 className="Hero-Title">Speck Academy 2023 powered by FOI</h1>
-              <p className="Hero-Subtitle">
-                Make a turnaround in your career or upgrade your current skill
-                set with knowledge-based lessons from IT practice.
-              </p>
-              <Button>Explore courses</Button>
-            </div>
-          </div>
-        </div>
-      </section>
-    )
+  const navigate = useNavigate();
+
+  return (
+    <HeroWrapper>
+      <HeroFigure>
+        <HeroImg 
+          src={HeroImage}
+          alt="Speck Academy Hero"/>
+      </HeroFigure>
+      <HeroOverlay/>
+      <HeroContent>
+        <HeroContentInner>
+          <HeroTextCard>
+            <HeroTitle>Speck Academy 2023 powered by FOI</HeroTitle>
+            <HeroSubtitle>
+              Make a turnaround in your career or upgrade your current skill
+              set with knowledge-based lessons from IT practice.
+            </HeroSubtitle>
+            <Button onClick={() => navigate("/courses")}>
+              Explore courses
+            </Button>
+          </HeroTextCard>
+        </HeroContentInner>
+      </HeroContent>
+    </HeroWrapper>
+  )
 }
 
 export default Hero

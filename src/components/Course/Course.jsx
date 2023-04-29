@@ -1,24 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import "./Course.scss"
 import { Link } from 'react-router-dom'
+import { 
+  Course as CourseWrapper, 
+  CourseImg,
+  CourseFigure,
+  CourseTitle,
+  CourseSubtitle,
+  CourseTime 
+} from "./CourseStyle";
 
 const Course = ({ id, imgSrc, imgAlt, title, subtitle, time }) => {
   return (
-    <article className="Course">
+    <CourseWrapper>
       <Link to={`/courses/${id}`}>
-        <figure className="Course-Figure">
-          <img
-              src={imgSrc}
-              alt={imgAlt}
-              className="Course-Img"
-          />
-        </figure>
-        <h3 className="Course-Title">{title}</h3>
-        <p className="Course-Subtitle">{subtitle}</p>
-        <p className="Course-Time">{time}</p>
+        <CourseFigure>
+          <CourseImg 
+            src={imgSrc}
+            alt={imgAlt}/>
+        </CourseFigure>
+        <CourseTitle>{title}</CourseTitle>
+        <CourseSubtitle>{subtitle}</CourseSubtitle>
+        <CourseTime>{time}</CourseTime>
       </Link>
-    </article>
+    </CourseWrapper>
   )
 }
 

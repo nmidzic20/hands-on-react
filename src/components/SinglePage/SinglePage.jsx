@@ -1,23 +1,24 @@
 import React from 'react'
-import './SinglePage.scss'
 import PropTypes from 'prop-types'
+import { 
+    SinglePage as SinglePageWrapper,
+    SinglePageContent, 
+    SinglePageFigure, 
+    SinglePageImg 
+} from './SinglePageStyle'
 
 const SinglePage = ({ imgSrc, imgAlt, content }) => {
   return (
-    <>
-       <article className="SinglePage">
-            <figure className="SinglePage-Figure">
-                <img
-                    src={imgSrc}
-                    alt={imgAlt}
-                    className="SinglePage-Img"
-                />
-            </figure>
-            <p className="SinglePage-Content">
-                {content}
-            </p>
-        </article> 
-    </>
+    <SinglePageWrapper>
+        <SinglePageFigure>
+            <SinglePageImg
+                src={imgSrc}
+                alt={imgAlt}/>
+        </SinglePageFigure>
+        <SinglePageContent>
+            {content}
+        </SinglePageContent>
+    </SinglePageWrapper>
   )
 }
 

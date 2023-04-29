@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors, breakpoints, fonts } from "../../utils/styles/theme"
+import { colors, breakpoints } from "../../utils/styles/theme"
 import {ReactComponent as HamburgerIcon } from "../../assets/images/icon-hamburger.svg"
 import {ReactComponent as LogoIcon } from "../../assets/images/logo.svg"
 import { NavLink } from "react-router-dom";
