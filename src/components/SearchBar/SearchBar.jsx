@@ -1,18 +1,27 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { 
+    SearchBar as SearchBarWrapper,
+    SearchBarInput 
+} from './SearchBar';
 
-const SearchBar = (props) => {
 
-    //props.onValueChange("html");
+const SearchBar = ({ placeholder, onValueChange }) => {
 
     return (
-        <div>
-            <p>Search: </p>
-            <input 
+        <SearchBarWrapper>
+            <SearchBarInput 
                 type='text' 
-                onChange={props.onValueChange}
-            ></input>
-        </div>
+                placeholder={placeholder}
+                onChange={onValueChange}
+            />
+        </SearchBarWrapper>
     )
+}
+
+SearchBar.propTypes = {
+    placeholder: PropTypes.string,
+    onValueChange: PropTypes.func,
 }
 
 export default SearchBar;

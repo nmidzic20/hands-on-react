@@ -21,17 +21,15 @@ const Courses = () => {
     />
   ));
 
-  const [searchInput, setSearchInput] = useState('');
-
   let handleSearch = (e) => { 
-    setSearchInput(e.target.value);
+    let searchInput = e.target.value.toLowerCase();
 
     let matchingCourses = 
       coursesMock.filter((course) => 
         course.title
           .toLowerCase()
           .includes(
-            searchInput.toLowerCase()
+            searchInput
           ));
 
     setCourses(matchingCourses);
@@ -45,8 +43,10 @@ const Courses = () => {
           don't find anything for you here, search for courses in detail on
           the courses page."
       >
-        <SearchBar onValueChange={handleSearch}></SearchBar>
-        {searchInput}
+        <SearchBar 
+          placeholder="Search..." 
+          onValueChange={handleSearch}
+        />
         <Grid>
           {courseItems}
         </Grid>
