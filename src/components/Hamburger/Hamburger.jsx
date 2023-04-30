@@ -6,7 +6,8 @@ import {
     HamburgerButton,
     HamburgerImg,
     HamburgerMenu,
-    HamburgerLink
+    HamburgerLink,
+    HamburgerCancelWrapper
 } from "./HamburgerStyle";
 import { CancelImg } from '../../utils/styles/generalStyles';
 
@@ -21,7 +22,12 @@ const Hamburger = () => {
     return (
     <HamburgerWrapper>
         <HamburgerButton onClick={() => { setOpen(!open); console.log("Clicked " + open); }}>
-            {open ? <CancelImg/> : <HamburgerImg/>}
+            {open ? 
+                <HamburgerCancelWrapper>
+                    <CancelImg/>
+                </HamburgerCancelWrapper>
+                : <HamburgerImg/>
+            }
         </HamburgerButton>
         <HamburgerMenu open={open}>
             <li><HamburgerLink to="/">Home</HamburgerLink></li>

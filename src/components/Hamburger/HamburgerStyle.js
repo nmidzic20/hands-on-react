@@ -62,3 +62,11 @@ export const HamburgerMenu = styled.ul`
         padding: 18px 24px;
     }
 `
+
+export const HamburgerCancelWrapper = styled.div`
+    position: fixed;
+    top: 20px;
+    right: 0px;
+    height: 32px;
+    width: 64px;
+`

@@ -5,7 +5,7 @@ import Hero from "../../components/Hero/Hero"
 import Section from "../../components/Section/Section"
 import coursesMock from "../../utils/mock/courses"
 import { useState, useEffect } from 'react'
-
+import Loader from '../../components/Loader/Loader.jsx'
 
 const Home = () => {
 
@@ -26,7 +26,7 @@ const Home = () => {
                     don't find anything for you here, search for courses in detail on
                     the courses page."
             >
-                { courses && 
+                { courses ? 
                 <Grid>
                     {courses.map((course, index) => 
                         index < 4 && (
@@ -40,7 +40,7 @@ const Home = () => {
                             time = {course.time}
                         />
                     ))}
-                </Grid>
+                </Grid> : <Loader/>
                 }
             </Section>
         </>

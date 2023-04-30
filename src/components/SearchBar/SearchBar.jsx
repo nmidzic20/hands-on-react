@@ -6,12 +6,13 @@ import {
 } from './SearchBar';
 
 
-const SearchBar = ({ placeholder, onValueChange }) => {
+const SearchBar = ({ placeholder, disabled, onValueChange }) => {
 
     return (
         <SearchBarWrapper>
             <SearchBarInput 
                 type='text' 
+                disabled={disabled}
                 placeholder={placeholder}
                 onChange={onValueChange}
             />
@@ -21,6 +22,7 @@ const SearchBar = ({ placeholder, onValueChange }) => {
 
 SearchBar.propTypes = {
     placeholder: PropTypes.string,
+    disabled: PropTypes.bool,
     onValueChange: PropTypes.func,
 }
 

@@ -43,4 +43,5 @@ export const CancelImg = styled(CancelIcon)`
     display: block;
     width: 32px;
     height: 32px;
+    background-color: ${colors.bgSecondary};
 `
