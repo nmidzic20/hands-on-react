@@ -12,7 +12,7 @@ export const Hamburger = styled.div`
 
 export const HamburgerButton = styled.button`
     z-index: 10;
-    position: relative; //neccessary for z-index to work, since this is now part of div (Hamburger)!
+    position: relative; //neccessary for z-index to work, since this is now part of div Hamburger
     outline: none;
     border: none;
     background-color: ${colors.bgPrimary};

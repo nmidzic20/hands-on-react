@@ -5,7 +5,6 @@ import {
     SearchBarInput 
 } from './SearchBar';
 
-
 const SearchBar = ({ placeholder, disabled, onValueChange }) => {
 
     return (

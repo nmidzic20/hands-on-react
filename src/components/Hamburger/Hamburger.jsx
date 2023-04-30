@@ -21,7 +21,7 @@ const Hamburger = () => {
 
     return (
     <HamburgerWrapper>
-        <HamburgerButton onClick={() => { setOpen(!open); console.log("Clicked " + open); }}>
+        <HamburgerButton onClick={() => setOpen(!open) }>
             {open ? 
                 <HamburgerCancelWrapper>
                     <CancelImg/>
