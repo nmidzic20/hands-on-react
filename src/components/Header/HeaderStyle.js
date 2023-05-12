@@ -1,11 +1,16 @@
 import styled from "styled-components";
-import { colors, breakpoints } from "../../utils/styles/theme"
-import {ReactComponent as LogoIcon } from "../../assets/images/logo.svg"
+import { colors, breakpoints } from "../../utils/styles/theme";
+import { ReactComponent as LogoIcon } from "../../assets/images/logo.svg";
 import { NavLink } from "react-router-dom";
+import { Button } from "../../utils/styles/generalStyles";
 
 export const Header = styled.header`
   background-color: ${colors.bgSecondary};
-`
+`;
+
+export const HeaderButton = styled(Button)`
+  margin-right: 32px;
+`;
 
 export const HeaderInner = styled.div`
   height: 80px;
@@ -27,22 +32,22 @@ export const HeaderInner = styled.div`
   @media screen and (${breakpoints.desktopLarge}) {
     max-width: 1280px;
   }
-`
+`;
 
 export const HeaderNav = styled.nav`
   display: none;
 
   @media screen and (${breakpoints.desktop}) {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
   }
-`
+`;
 
 export const LogoImg = styled(LogoIcon)`
   path {
     fill: ${colors.primary};
   }
-`
+`;
 
 export const HeaderLink = styled(NavLink)`
   margin-right: 32px;
@@ -53,9 +58,8 @@ export const HeaderLink = styled(NavLink)`
     color: ${colors.primary};
     font-weight: 600;
   }
-  
+
   &:hover {
     color: ${colors.primary};
   }
-`
-
+`;
