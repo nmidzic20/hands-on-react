@@ -7,19 +7,69 @@ import Main from "./components/Main/Main";
 import SignIn from "./pages/SignIn/SignIn";
 import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile.jsx";
+import { useState, useEffect } from "react";
+import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setIsLoggedIn(localStorage.getItem("jwt") ? true : false);
+    setIsAdmin(localStorage.getItem("isAdmin") === "true");
+  });
+
   return (
     <>
-      <Header />
+      <Header
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        isAdmin={isAdmin}
+        setIsAdmin={setIsAdmin}
+      />
       <Main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/courses/:id" element={<Course />} />
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/courses"
+            element={
+              <ProtectedRoute user={isLoggedIn}>
+                <Courses />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/courses/:id"
+            element={
+              <ProtectedRoute user={isLoggedIn}>
+                <Course />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/sign-in"
+            element={
+              <ProtectedRoute user={!isLoggedIn}>
+                <SignIn setIsLoggedIn={setIsLoggedIn} setIsAdmin={setIsAdmin} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <ProtectedRoute user={!isLoggedIn}>
+                <Register />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute user={isAdmin}>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Main>
     </>

@@ -116,3 +116,19 @@ export const ErrorMessage = styled(ErrorMessageFormik)`
   color: ${colors.primary};
   padding-top: 8px;
 `;
+
+export const FormSuccessMessage = styled.p`
+  padding: 12px;
+  font-size: 14px;
+  color: ${colors.success};
+  text-align: center;
+  background: ${colors.successBackground};
+  border-radius: 8px;
+  line-height: 150%;
+  ${(props) =>
+    props.isError &&
+    `
+        color: ${colors.error};
+        background: ${colors.errorBackground};
+    `}
+`;

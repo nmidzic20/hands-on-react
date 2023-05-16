@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   ErrorMessage,
   Field,
   Form,
   FormRow,
+  FormSuccessMessage,
   Option,
   Select,
 } from "../../utils/styles/generalStyles";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import Section from "../../components/Section/Section";
+import { registerUser } from "../../api/users";
 
 const Register = () => {
+  const [successMessage, setSuccessMessage] = useState(null);
+
   return (
     <Section title="Register">
       <Formik
@@ -50,28 +54,62 @@ const Register = () => {
           ),
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          setTimeout(() => {
-            const data = {
-              first_name: values.firstName,
-              last_name: values.lastName,
-              email: values.email,
-              password: values.password,
-              github_username: values.githubUsername,
-              zeplin_username: values.zeplinUsername,
-              active_faculty_year:
-                parseInt(values.activeFacultyYear) === 0
-                  ? null
-                  : parseInt(values.activeFacultyYear),
-              is_admin: false,
-            };
-            alert(JSON.stringify(data, null, 2));
-            setSubmitting(false);
-            resetForm();
-          }, 1000);
+          const data = {
+            first_name: values.firstName,
+            last_name: values.lastName,
+            email: values.email,
+            password: values.password,
+            github_username: values.githubUsername,
+            zeplin_username: values.zeplinUsername,
+            active_faculty_year:
+              parseInt(values.activeFacultyYear) === 0
+                ? null
+                : parseInt(values.activeFacultyYear),
+            is_admin: false,
+          };
+
+          registerUser(data)
+            .then((res) => {
+              resetForm({
+                firstName: "",
+                last_name: "",
+                email: "",
+                password: "",
+                passwordRepeat: "",
+                github_username: "",
+                zeplin_username: "",
+                active_faculty_year: "",
+              });
+
+              setSuccessMessage({
+                error: false,
+                message: "User registered successfully!",
+              });
+
+              setTimeout(() => {
+                setSuccessMessage(null);
+              }, 3000);
+            })
+            .catch((res) => {
+              setSuccessMessage({
+                error: true,
+                message: "There was an error",
+              });
+            })
+            .finally(() => {
+              setSubmitting(false);
+            });
         }}
       >
         {(formik) => (
           <Form>
+            {successMessage && (
+              <FormRow>
+                <FormSuccessMessage isError={successMessage.error}>
+                  {successMessage.message}
+                </FormSuccessMessage>
+              </FormRow>
+            )}
             <FormRow>
               <Field
                 type="text"

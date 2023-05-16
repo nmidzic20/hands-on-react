@@ -11,7 +11,13 @@ import {
 } from "./HamburgerStyle";
 import { CancelImg } from "../../utils/styles/generalStyles";
 
-const Hamburger = () => {
+const Hamburger = ({
+  isLoggedIn,
+  setIsLoggedIn,
+  isAdmin,
+  setIsAdmin,
+  signOut,
+}) => {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
 
@@ -35,16 +41,27 @@ const Hamburger = () => {
           <HamburgerLink to="/">Home</HamburgerLink>
         </li>
         <li>
-          <HamburgerLink to="/courses">Courses</HamburgerLink>
+          {isLoggedIn && <HamburgerLink to="/courses">Courses</HamburgerLink>}
         </li>
         <li>
-          <HamburgerLink to="/profile">Profile</HamburgerLink>
+          {isLoggedIn && isAdmin && (
+            <HamburgerLink to="/profile">Profile</HamburgerLink>
+          )}
         </li>
         <li>
-          <HamburgerLink to="/sign-in">Sign In</HamburgerLink>
+          <HamburgerLink
+            to="/sign-in"
+            onClick={() => {
+              isLoggedIn ? signOut() : navigate("/sign-in");
+            }}
+          >
+            {isLoggedIn ? "Sign Out" : "Sign In"}
+          </HamburgerLink>
         </li>
         <li>
-          <HamburgerLink to="/register">Register</HamburgerLink>
+          {!isLoggedIn && (
+            <HamburgerLink to="/register">Register</HamburgerLink>
+          )}
         </li>
       </HamburgerMenu>
     </HamburgerWrapper>

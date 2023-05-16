@@ -9,9 +9,18 @@ import {
   HeaderButton,
 } from "./HeaderStyle";
 import Hamburger from "../Hamburger/Hamburger";
+import { useEffect } from "react";
 
-const Header = () => {
+const Header = ({ isLoggedIn, setIsLoggedIn, isAdmin, setIsAdmin }) => {
   const navigate = useNavigate();
+
+  function signOut() {
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("isAdmin");
+    setIsLoggedIn(false);
+    setIsAdmin(false);
+    navigate("/");
+  }
 
   return (
     <HeaderWrapper>
@@ -19,15 +28,30 @@ const Header = () => {
         <Link to="/">
           <LogoImg />
         </Link>
-        <Hamburger />
+        <Hamburger
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          isAdmin={isAdmin}
+          setIsAdmin={setIsAdmin}
+          signOut={signOut}
+        />
         <HeaderNav>
           <HeaderLink to="/">Home</HeaderLink>
-          <HeaderLink to="/courses">Courses</HeaderLink>
-          <HeaderLink to="/profile">Profile</HeaderLink>
-          <HeaderButton onClick={() => navigate("/sign-in")} isOutline>
-            Sign In
+          {isLoggedIn && <HeaderLink to="/courses">Courses</HeaderLink>}
+          {isLoggedIn && isAdmin && (
+            <HeaderLink to="/profile">Profile</HeaderLink>
+          )}
+          <HeaderButton
+            onClick={() => {
+              isLoggedIn ? signOut() : navigate("/sign-in");
+            }}
+            isOutline
+          >
+            {isLoggedIn ? "Sign Out" : "Sign In"}
           </HeaderButton>
-          <Button onClick={() => navigate("/register")}>Register</Button>
+          {!isLoggedIn && (
+            <Button onClick={() => navigate("/register")}>Register</Button>
+          )}
         </HeaderNav>
       </HeaderInner>
     </HeaderWrapper>
