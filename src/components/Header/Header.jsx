@@ -37,7 +37,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn, isAdmin, setIsAdmin }) => {
         />
         <HeaderNav>
           <HeaderLink to="/">Home</HeaderLink>
-          {isLoggedIn && <HeaderLink to="/courses">Courses</HeaderLink>}
+          <HeaderLink to="/courses">Courses</HeaderLink>
           {isLoggedIn && isAdmin && (
             <HeaderLink to="/profile">Profile</HeaderLink>
           )}

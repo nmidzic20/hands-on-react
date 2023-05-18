@@ -41,7 +41,7 @@ const Hamburger = ({
           <HamburgerLink to="/">Home</HamburgerLink>
         </li>
         <li>
-          {isLoggedIn && <HamburgerLink to="/courses">Courses</HamburgerLink>}
+          <HamburgerLink to="/courses">Courses</HamburgerLink>
         </li>
         <li>
           {isLoggedIn && isAdmin && (

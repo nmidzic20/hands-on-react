@@ -30,22 +30,8 @@ function App() {
       <Main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/courses"
-            element={
-              <ProtectedRoute user={isLoggedIn}>
-                <Courses />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/courses/:id"
-            element={
-              <ProtectedRoute user={isLoggedIn}>
-                <Course />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/courses/:id" element={<Course />} />
           <Route
             path="/sign-in"
             element={
