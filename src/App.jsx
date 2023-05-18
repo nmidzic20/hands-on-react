@@ -7,12 +7,13 @@ import Main from "./components/Main/Main";
 import SignIn from "./pages/SignIn/SignIn";
 import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile.jsx";
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { isAdmin, setIsAdmin } = useContext(AuthContext);
 
   useEffect(() => {
     setIsLoggedIn(localStorage.getItem("jwt") ? true : false);
@@ -21,12 +22,7 @@ function App() {
 
   return (
     <>
-      <Header
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-        isAdmin={isAdmin}
-        setIsAdmin={setIsAdmin}
-      />
+      <Header />
       <Main>
         <Routes>
           <Route path="/" element={<Home />} />

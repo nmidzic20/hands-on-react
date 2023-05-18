@@ -9,10 +9,14 @@ import {
   HeaderButton,
 } from "./HeaderStyle";
 import Hamburger from "../Hamburger/Hamburger";
-import { useEffect } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
-const Header = ({ isLoggedIn, setIsLoggedIn, isAdmin, setIsAdmin }) => {
+const Header = () => {
   const navigate = useNavigate();
+
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { isAdmin, setIsAdmin } = useContext(AuthContext);
 
   function signOut() {
     localStorage.removeItem("jwt");
@@ -28,13 +32,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn, isAdmin, setIsAdmin }) => {
         <Link to="/">
           <LogoImg />
         </Link>
-        <Hamburger
-          isLoggedIn={isLoggedIn}
-          setIsLoggedIn={setIsLoggedIn}
-          isAdmin={isAdmin}
-          setIsAdmin={setIsAdmin}
-          signOut={signOut}
-        />
+        <Hamburger signOut={signOut} />
         <HeaderNav>
           <HeaderLink to="/">Home</HeaderLink>
           <HeaderLink to="/courses">Courses</HeaderLink>

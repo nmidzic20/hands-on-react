@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import {
   Hamburger as HamburgerWrapper,
@@ -10,20 +10,18 @@ import {
   HamburgerCancelWrapper,
 } from "./HamburgerStyle";
 import { CancelImg } from "../../utils/styles/generalStyles";
+import { AuthContext } from "../../context/AuthContext";
 
-const Hamburger = ({
-  isLoggedIn,
-  setIsLoggedIn,
-  isAdmin,
-  setIsAdmin,
-  signOut,
-}) => {
+const Hamburger = ({ signOut }) => {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  const { isLoggedIn } = useContext(AuthContext);
+  const { isAdmin } = useContext(AuthContext);
 
   return (
     <HamburgerWrapper>
