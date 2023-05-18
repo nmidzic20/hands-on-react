@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Button,
   ErrorMessage,
@@ -11,9 +11,13 @@ import { Formik } from "formik";
 import Section from "../../components/Section/Section";
 import { getUsers, loginUser } from "../../api/users";
 import { FormSuccessMessage } from "../../utils/styles/generalStyles";
+import { AuthContext } from "../../context/AuthContext";
 
-const SignIn = ({ setIsLoggedIn, setIsAdmin }) => {
+const SignIn = () => {
   const [successMessage, setSuccessMessage] = useState(null);
+
+  const { setIsLoggedIn } = useContext(AuthContext);
+  const { setIsAdmin } = useContext(AuthContext);
 
   return (
     <Section title="Sign In">

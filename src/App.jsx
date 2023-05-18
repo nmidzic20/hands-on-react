@@ -31,15 +31,15 @@ function App() {
           <Route
             path="/sign-in"
             element={
-              <ProtectedRoute user={!isLoggedIn}>
-                <SignIn setIsLoggedIn={setIsLoggedIn} setIsAdmin={setIsAdmin} />
+              <ProtectedRoute permission={!isLoggedIn}>
+                <SignIn />
               </ProtectedRoute>
             }
           />
           <Route
             path="/register"
             element={
-              <ProtectedRoute user={!isLoggedIn}>
+              <ProtectedRoute permission={!isLoggedIn}>
                 <Register />
               </ProtectedRoute>
             }
@@ -47,7 +47,7 @@ function App() {
           <Route
             path="/profile"
             element={
-              <ProtectedRoute user={isAdmin}>
+              <ProtectedRoute permission={isAdmin}>
                 <Profile />
               </ProtectedRoute>
             }

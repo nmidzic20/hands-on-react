@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   Hamburger as HamburgerWrapper,
   HamburgerButton,
@@ -13,6 +13,8 @@ import { CancelImg } from "../../utils/styles/generalStyles";
 import { AuthContext } from "../../context/AuthContext";
 
 const Hamburger = ({ signOut }) => {
+  const navigate = useNavigate();
+
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
 
