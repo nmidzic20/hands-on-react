@@ -35,7 +35,6 @@ const SignIn = ({ setIsLoggedIn, setIsAdmin }) => {
             const response = await loginUser(values);
             const users = await getUsers(response.access_token);
             const user = users.data.find((user) => user.email == values.email);
-            console.log("USER");
             console.log(user);
             setSuccessMessage({
               error: false,
