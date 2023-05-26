@@ -40,6 +40,9 @@ const Profile = () => {
   const formikRef = useRef();
 
   useEffect(() => {
+    //when refreshing, context is destroyed, so userData from signed in user won't show when refreshed
+    //correct method is to fetch the user from API each time, using ID of user which is saved in jwt from localStorage
+
     if (passwordChanged) {
       formikRef.current?.resetForm();
       //but not working with resetForm({ values: userData }) - for the case where if we click only on Update password,
