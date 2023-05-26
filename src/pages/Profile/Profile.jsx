@@ -51,15 +51,21 @@ const Profile = () => {
     }
   });
 
+  const handleEdit = () => {
+    if (isEditing) {
+      console.log(userData);
+      formikRef.current?.resetForm();
+    }
+    setIsEditing((current) => !current);
+  };
+
   return (
     <Section>
       <FlexContainer>
         <FlexRowTitleButton>
           <Title>Profile</Title>
           <ProfileButton
-            onClick={function () {
-              setIsEditing((current) => !current);
-            }}
+            onClick={handleEdit}
             isOutline={isEditing ? false : true}
           >
             {isEditing ? "Cancel" : "Edit"}
@@ -77,6 +83,7 @@ const Profile = () => {
                 zeplinUsername: userData.zeplin_username,
                 activeFacultyYear: userData.active_faculty_year,
               }}
+              enableReinitialize={true}
               validationSchema={Yup.object({
                 firstName: Yup.string().required("First name is required"),
                 lastName: Yup.string().required("Last name is required"),
