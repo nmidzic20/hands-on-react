@@ -1,38 +1,40 @@
-import React from 'react'
-import Section from '../../components/Section/Section'
-import SinglePage from '../../components/SinglePage/SinglePage'
-import { useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import coursesMock from '../../utils/mock/courses'
+import React from "react";
+import Section from "../../components/Section/Section";
+import SinglePage from "../../components/SinglePage/SinglePage";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import coursesMock from "../../utils/mock/courses";
+import coursesStore from "../../store/CoursesStore";
+import { observer } from "mobx-react";
 
 const Course = () => {
-  const {id} = useParams();
-
-  const [courses, setCourses] = useState(null);
-  const [course, setCourse] = useState(null);
+  const { id } = useParams();
+  const { getCourseById, setCourses, currentCourse, coursesLength, courses } =
+    coursesStore;
 
   useEffect(() => {
-    setTimeout(() => {
-      setCourses(coursesMock)
-    }, 1000);
+    if (coursesLength == 0) {
+      setTimeout(() => {
+        setCourses(coursesMock);
+        getCourseById(id);
+      }, 1000);
+    }
   }, []);
-
   useEffect(() => {
-    courses && setCourse(courses.find((course) => course.id == id));
-  }, [courses]);
+    coursesLength && getCourseById(id);
+  }, [coursesLength]);
 
   return (
-    course &&
-    <Section
-      title={course.title} 
-    >
-      <SinglePage
-        imgSrc={course.imgSrc}
-        imgAlt={course.imgAlt}
-        content={course.content}
-      />
-    </Section>
-  )
-}
+    currentCourse && (
+      <Section title={currentCourse.title}>
+        <SinglePage
+          imgSrc={currentCourse.imgSrc}
+          imgAlt={currentCourse.imgAlt}
+          content={currentCourse.content}
+        />
+      </Section>
+    )
+  );
+};
 
-export default Course
+export default observer(Course);
