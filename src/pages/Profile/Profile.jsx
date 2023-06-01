@@ -23,7 +23,6 @@ import {
 import PasswordReset from "../../components/PasswordReset/PasswordReset.jsx";
 import { useEffect } from "react";
 import { useRef } from "react";
-//import jwt from "jwt-decode";
 
 const Profile = () => {
   const [userData, setUserData] = useState({
@@ -44,7 +43,6 @@ const Profile = () => {
     //when refreshing, context is destroyed, so userData from signed in user won't show when refreshed
     //correct method is to fetch the user from API each time, using ID of user which is saved in jwt from localStorage
     //TODO
-    //console.log(jwt(localStorage.getItem("jwt")));
 
     if (passwordChanged) {
       formikRef.current?.resetForm();
