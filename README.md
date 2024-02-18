@@ -2,9 +2,7 @@ A React web application created as a homework for SPECK Academy 2023, allows vie
 
 # Installation
 
-## Prerequisite
-
-Installed NodeJS/npm.
+Prerequisite: Installed NodeJS/npm.
 
 From project directory, run:
 
